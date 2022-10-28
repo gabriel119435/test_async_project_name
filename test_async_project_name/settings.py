@@ -16,6 +16,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'user',
+        'PASSWORD': 'pass',
+        'NAME': 'db_name',
+        'HOST': 'localhost'
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -42,12 +51,6 @@ TEMPLATES = [
         },
     },
 ]
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

@@ -1,3 +1,8 @@
 django
+psycopg2
 channels
 daphne
+pytest
+pytest-django
+model_bakery
+pytest-asyncio

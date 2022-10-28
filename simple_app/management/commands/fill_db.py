@@ -1,9 +1,9 @@
-import string
 from random import choice, randint
 
 from django.core.management import BaseCommand
 
 from simple_app.models import Level, Dev
+from simple_app.services.s_svc import create_random_string
 
 
 class Command(BaseCommand):
@@ -16,7 +16,3 @@ class Command(BaseCommand):
             ) for _ in range(20000)
         ]
         Dev.objects.bulk_create(devs)
-
-
-def create_random_string():
-    return ''.join(choice(string.ascii_letters) for _ in range(randint(5, 15)))

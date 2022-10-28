@@ -1,13 +1,21 @@
 import json
+import string
 from datetime import datetime
+from random import choice, randint
 
 from django.core import serializers
 
 from simple_app.models import Dev
 
 
+def create_random_string():
+    return ''.join(choice(string.ascii_letters) for _ in range(randint(10, 20)))
+
+
 def read():
-    return json.loads(serializers.serialize("json", Dev.objects.all()))
+    resp = json.loads(serializers.serialize("json", Dev.objects.all()))
+    resp.insert(0, create_random_string())
+    return resp
 
 
 def create(dev_dict):

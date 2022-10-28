@@ -1,6 +1,8 @@
 import asyncio
 import json
+import string
 from datetime import datetime
+from random import choice, randint
 
 from asgiref.sync import sync_to_async
 from django.core import serializers
@@ -9,8 +11,15 @@ from simple_app.models import Dev
 from simple_app.services import s_svc
 
 
+async def create_random_string():
+    await asyncio.sleep(1)
+    return ''.join(choice(string.ascii_letters) for _ in range(randint(10, 20)))
+
+
 async def read():
-    return json.loads(await sync_to_async(serializers.serialize)("json", Dev.objects.all()))
+    resp = json.loads(await sync_to_async(serializers.serialize)("json", Dev.objects.all()))
+    resp.insert(0, await create_random_string())
+    return resp
 
 
 @sync_to_async
