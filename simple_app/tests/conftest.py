@@ -8,9 +8,11 @@ from simple_app.models import Dev
 
 @pytest.fixture
 def random_user():
+    print('random_user')
     return baker.make(Dev)
 
 
-@pytest_asyncio.fixture
+# @pytest_asyncio.fixture
+@pytest.fixture
 async def a_random_user():
     return await sync_to_async(baker.make)(Dev)
