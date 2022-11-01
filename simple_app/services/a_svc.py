@@ -39,7 +39,7 @@ async def a_read_slow():
     return await sync_to_async(s_svc.read_slow)()
 
 
-async def read_slow_but_fast():
+async def read_slow_but_better():
     start = datetime.now()
 
     young_devs, ab_devs, not_junior_devs = await asyncio.gather(

@@ -5,7 +5,7 @@ from django.http import JsonResponse
 
 from simple_app.custom_async.csrf import both_csrf_exempt
 from simple_app.custom_async.http_require import custom_require_GET
-from simple_app.services.a_svc import read, create, delete, a_read_slow, read_slow_but_fast
+from simple_app.services.a_svc import read, create, delete, a_read_slow, read_slow_but_better
 
 
 @both_csrf_exempt
@@ -30,4 +30,4 @@ async def dev(request):
 @custom_require_GET
 async def slow_filter(request):
     return JsonResponse(await a_read_slow(), safe=False)
-    # return JsonResponse(await read_slow_but_fast(), safe=False)
+    # return JsonResponse(await read_slow_but_better(), safe=False)
