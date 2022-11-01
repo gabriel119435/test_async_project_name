@@ -34,10 +34,7 @@ $ curl -v -X DELETE http://localhost:8000/dev/?id=2
 * https://realpython.com/intro-to-python-threading/
 * https://realpython.com/python-gil/
 * https://stackoverflow.com/questions/27435284/multiprocessing-vs-multithreading-vs-asyncio-in-python-3
-
 * https://docs.python.org/3/library/asyncio-task.html
-
 * https://channels.readthedocs.io/en/stable/installation.html
 * https://docs.djangoproject.com/en/4.1/topics/async/
-
 * https://code.djangoproject.com/ticket/31949
