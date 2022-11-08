@@ -22,7 +22,8 @@ DATABASES = {
         'USER': 'user',
         'PASSWORD': 'pass',
         'NAME': 'db_name',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
+        'PORT': 5431
     }
 }
 
@@ -34,8 +35,29 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_app.middleware.custom_log',
 ]
 ROOT_URLCONF = 'test_async_project_name.urls'
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "level": "DEBUG",
+        "handlers": ["console"],
+    },
+    "loggers": {
+        "django.request": {
+            "level": "DEBUG",
+        },
+    },
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

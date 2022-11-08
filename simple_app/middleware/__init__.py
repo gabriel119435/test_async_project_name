@@ -1,0 +1,1 @@
+from simple_app.middleware.custom_log_file import custom_log

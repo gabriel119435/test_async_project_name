@@ -10,6 +10,8 @@ from simple_app.services.a_svc import read, create, delete, a_read_slow, read_sl
 
 @both_csrf_exempt
 async def dev(request):
+    print('dev')
+
     if request.method == "GET":
         return JsonResponse(await read(), safe=False)
 
