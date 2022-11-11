@@ -10,12 +10,14 @@ from django.http import HttpResponse
 def a(request):
     print('a', threading.get_ident(), asyncio.iscoroutinefunction(a))
     time.sleep(10)
+    # raise ValueError('bug')
     return HttpResponse("hi")
 
 
 async def b(request):
     print('b', threading.get_ident(), asyncio.iscoroutinefunction(b))
     await asyncio.sleep(10)
+    # raise ValueError('bug')
     return HttpResponse("hi")
 
 

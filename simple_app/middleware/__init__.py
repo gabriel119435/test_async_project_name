@@ -1,1 +1,3 @@
-from simple_app.middleware.custom_log_file import custom_log
+from simple_app.middleware.custom_log_file_1 import custom_log_1
+from simple_app.middleware.custom_log_file_2 import custom_log_2
+from simple_app.middleware.custom_log_file_3 import custom_log_3

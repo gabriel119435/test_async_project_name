@@ -28,6 +28,7 @@ DATABASES = {
 }
 
 MIDDLEWARE = [
+    'simple_app.middleware.custom_log_1',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -35,7 +36,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'simple_app.middleware.custom_log',
+    'simple_app.middleware.custom_log_2',
+    'simple_app.middleware.custom_log_3',
 ]
 ROOT_URLCONF = 'test_async_project_name.urls'
 
