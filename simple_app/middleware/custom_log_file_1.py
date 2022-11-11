@@ -32,7 +32,7 @@ def custom_log_1(get_response):
 
         async def _process_exception(request, exception):
             print('1 a exception', threading.get_ident(), exception)
-            return await sync_to_async(HttpResponse)('ex')
+            return HttpResponse('ex')
 
     else:
         def middleware(request):
