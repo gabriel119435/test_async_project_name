@@ -1,5 +1,5 @@
 import pytest
-from asgiref.sync import sync_to_async
+from asgiref.sync import sync_to_async, async_to_sync
 
 from simple_app.models import Dev
 from simple_app.services import a_svc, s_svc
@@ -47,3 +47,13 @@ async def test_async_with_s_fixture(random_user):
     assert await sync_to_async(Dev.objects.filter(pk=random_user.pk).exists)()
     await a_svc.delete(random_user.pk)
     assert not await sync_to_async(Dev.objects.filter(pk=random_user.pk).exists)()
+
+
+# same as before but inverted (sync and async)
+@pytest.mark.django_db(transaction=True)
+def test_async_with_s_fixture_2(random_user):
+    print(random_user.pk)
+    print(Dev.objects.all().count())
+    assert Dev.objects.filter(pk=random_user.pk).exists()
+    async_to_sync(a_svc.delete)(random_user.pk)
+    assert not Dev.objects.filter(pk=random_user.pk).exists()
