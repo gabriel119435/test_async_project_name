@@ -38,11 +38,11 @@ async def test_async_with_a_fixture(a_random_user):
     assert not await sync_to_async(Dev.objects.filter(pk=a_random_user.pk).exists)()
 
 
-# async test with sync fixture hangs the test
-@pytest.mark.django_db
-async def not_a_test_async_with_s_fixture(random_user):
+# async test with sync fixture hangs the test when save() is called from baker object
+@pytest.mark.django_db(transaction=True)
+async def test_async_with_s_fixture(random_user):
     print(random_user.pk)
-    await sync_to_async(random_user.save)()
+    # await sync_to_async(random_user.save)() hangs
     print(await Dev.objects.all().acount())
     assert await sync_to_async(Dev.objects.filter(pk=random_user.pk).exists)()
     await a_svc.delete(random_user.pk)
