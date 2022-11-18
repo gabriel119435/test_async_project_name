@@ -38,3 +38,4 @@ $ curl -v -X DELETE http://localhost:8000/dev/?id=2
 * https://channels.readthedocs.io/en/stable/installation.html
 * https://docs.djangoproject.com/en/4.1/topics/async/
 * https://code.djangoproject.com/ticket/31949
+* https://wersdoerfer.de/blogs/ephes_blog/django-31-async/
