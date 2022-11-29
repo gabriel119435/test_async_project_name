@@ -1,13 +1,17 @@
 import asyncio
 import threading
 import time
+from contextvars import ContextVar
 from datetime import datetime
 from random import random, getrandbits
 
 from django.http import HttpResponse
 
+from simple_app.middleware.context_var_printer import print_context
+
 
 def a(request):
+    # print_context()
     print('a', threading.get_ident(), asyncio.iscoroutinefunction(a))
     time.sleep(10)
     # raise ValueError('bug')
@@ -15,6 +19,7 @@ def a(request):
 
 
 async def b(request):
+    # print_context()
     print('b', threading.get_ident(), asyncio.iscoroutinefunction(b))
     await asyncio.sleep(10)
     # raise ValueError('bug')

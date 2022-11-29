@@ -1,8 +1,6 @@
 import asyncio
 import threading
 
-from asgiref.sync import sync_to_async
-from django.http import HttpResponse
 from django.utils.decorators import sync_and_async_middleware
 
 
@@ -32,7 +30,7 @@ def custom_log_1(get_response):
 
         async def _process_exception(request, exception):
             print('1 a exception', threading.get_ident(), exception)
-            return HttpResponse('ex')
+            # return HttpResponse('ex')
 
     else:
         def middleware(request):
@@ -46,7 +44,7 @@ def custom_log_1(get_response):
 
         def _process_exception(request, exception):
             print('1 s exception', threading.get_ident(), exception)
-            return HttpResponse('ex')
+            # return HttpResponse('ex')
 
     middleware.process_view = _process_view
     middleware.process_exception = _process_exception
